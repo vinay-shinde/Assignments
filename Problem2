@@ -1,0 +1,32 @@
+def firstUniqChar(s):
+    """
+    Finds the index of the first non-repeating character in a string.
+
+    Args:
+        s: str - The input string.
+
+    Returns:
+        int - The index of the first non-repeating character. If no such character exists, returns -1.
+    """
+    char_count = {}  # Dictionary to store the frequency of each character
+
+    # Count the frequency of each character in the string
+    for char in s:
+        char_count[char] = char_count.get(char, 0) + 1
+
+    # Iterate through the string to find the first non-repeating character
+    for i, char in enumerate(s):
+        if char_count[char] == 1:
+            return i
+
+    return -1  # No non-repeating character found
+
+# Example test cases
+s1 = "leetcode"
+print(firstUniqChar(s1))  # Output: 0
+
+s2 = "loveleetcode"
+print(firstUniqChar(s2))  # Output: 2
+
+s3 = "aabb"
+print(firstUniqChar(s3))  # Output: -1
